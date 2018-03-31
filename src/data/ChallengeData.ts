@@ -1,5 +1,6 @@
 export interface MobData {
-    asset: string
+    asset: string,
+    initiative: number
 }
 
 export interface ChallengeData {

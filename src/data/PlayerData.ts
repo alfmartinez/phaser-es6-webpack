@@ -1,6 +1,7 @@
 export interface CharacterData {
     name: string,
-    asset: string
+    asset: string,
+    initiative: number
 }
 
 export interface PlayerData {

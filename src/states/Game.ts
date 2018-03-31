@@ -23,7 +23,7 @@ export default class extends State {
     preload() {}
 
     create() {
-        console.log('Set background', this.scene.location)
+
         this.game.add.image(0,0,this.scene.location);
         this.scene.team.forEach((item: Character) => this.game.add.existing(item));
         this.scene.opponents.forEach((item: Mob) => this.game.add.existing(item));

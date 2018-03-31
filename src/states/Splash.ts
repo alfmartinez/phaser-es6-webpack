@@ -1,5 +1,7 @@
 import * as Phaser from 'phaser-ce'
 import {centerGameObjects} from '../utils'
+import ChallengeFactory from "../data/ChallengeFactory";
+import PlayerDataFactory from "../data/PlayerDataFactory";
 
 export default class extends Phaser.State {
 
@@ -26,19 +28,9 @@ export default class extends Phaser.State {
     }
 
     create() {
-        const playerData = {
-            team: [{
-                name: 'Lord Bollet',
-                asset: 'paris'
-            }]
-        };
 
-        const challengeData = {
-            opponents: [{
-                asset: 'amanite'
-            }],
-            location: 'bg_sous-bois'
-        };
+        const playerData = PlayerDataFactory.createInitial();
+        const challengeData = ChallengeFactory.create();
 
         this.state.start('Game', true, false, playerData, challengeData)
     }
