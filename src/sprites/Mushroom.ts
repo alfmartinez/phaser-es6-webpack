@@ -13,7 +13,4 @@ export default class extends Sprite {
     this.anchor.setTo(0.5)
   }
 
-  update () {
-    this.angle += 1
-  }
 }
