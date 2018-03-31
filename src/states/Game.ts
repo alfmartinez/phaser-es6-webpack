@@ -1,34 +1,42 @@
 /* globals __DEV__ */
-import * as Phaser from 'phaser-ce'
-import Mushroom from '../sprites/Mushroom'
-import SceneFactory from '../scenes/SceneFactory';
-import PlayerData from '../data/PlayerData';
+import {State} from 'phaser-ce'
+import SceneFactory from '../scenes/SceneBuilder';
+import SceneData from '../data/SceneData';
+import Character from '../sprites/Character';
+import Mob from '../sprites/Mob';
+import {PlayerData} from "../data/PlayerData";
+import {ChallengeData} from "../data/ChallengeData";
 
 declare var __DEV__: boolean;
 
-export default class extends Phaser.State {
+export default class extends State {
 
-    team: Mushroom[];
+    scene: SceneData;
 
-    init(playerData: PlayerData) {
-        const sceneMaker = new SceneFactory(this.game, this.world)
-        const {team} = sceneMaker.create(playerData)
-        this.team = team;
+    init(playerData: PlayerData, challengeData: ChallengeData) {
+
+        const sceneMaker = new SceneFactory(this.game, this.world);
+        this.scene = sceneMaker.create(playerData, challengeData);
+
     }
 
-    preload() {
-    }
+    preload() {}
 
     create() {
 
-        this.team.forEach(item => this.game.add.existing(item))
+        this.scene.team.forEach((item: Character) => this.game.add.existing(item));
+        this.scene.opponents.forEach((item: Mob) => this.game.add.existing(item));
 
     }
 
     render() {
         if (__DEV__) {
-            this.team.forEach((item, i) =>
+            this.scene.team.forEach((item: Character, i) =>
                 this.game.debug.spriteInfo(item, 32, 32 + 100 * i)
+            )
+
+            this.scene.opponents.forEach((item: Mob, i) =>
+                this.game.debug.spriteInfo(item, 32, 64 + 100 * (i+2))
             )
         }
     }

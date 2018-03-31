@@ -1,0 +1,16 @@
+import {Game, Sprite} from 'phaser-ce'
+
+interface props {
+    game: Game,
+    x: number,
+    y: number,
+    asset: string
+};
+
+export default class extends Sprite {
+    constructor ({ game, x, y, asset } : props) {
+        super(game, x, y, asset)
+        this.anchor.setTo(0.5)
+    }
+
+}

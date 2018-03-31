@@ -1,10 +1,5 @@
 import * as Phaser from 'phaser-ce'
 import {centerGameObjects} from '../utils'
-import Mushroom from "../sprites/Mushroom";
-
-interface PlayerData {
-    team: Mushroom[]
-}
 
 export default class extends Phaser.State {
 
@@ -27,8 +22,19 @@ export default class extends Phaser.State {
     }
 
     create() {
+        const playerData = {
+            team: [{
+                name: 'Lord Bollet',
+                asset: 'mushroom'
+            }]
+        };
 
+        const challengeData = {
+            opponents: [{
+                asset: 'mushroom'
+            }]
+        };
 
-        this.state.start('Game', false, false)
+        this.state.start('Game', false, false, playerData, challengeData)
     }
 }
