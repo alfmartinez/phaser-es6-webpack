@@ -31,9 +31,12 @@ export default class SceneBuilder {
             asset: mobData.asset
         }))
 
+        const {location} = challenge;
+
         return {
             team,
-            opponents
+            opponents,
+            location
         };
     }
 }

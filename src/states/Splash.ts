@@ -18,6 +18,10 @@ export default class extends Phaser.State {
         // load your assets
         //
         this.load.image('mushroom', 'assets/images/mushroom2.png')
+        this.load.image('paris', 'assets/images/paris.png')
+        this.load.image('amanite', 'assets/images/amanite.png')
+
+        this.load.image('bg_sous-bois', 'assets/images/sous-bois.png')
 
     }
 
@@ -25,16 +29,17 @@ export default class extends Phaser.State {
         const playerData = {
             team: [{
                 name: 'Lord Bollet',
-                asset: 'mushroom'
+                asset: 'paris'
             }]
         };
 
         const challengeData = {
             opponents: [{
-                asset: 'mushroom'
-            }]
+                asset: 'amanite'
+            }],
+            location: 'bg_sous-bois'
         };
 
-        this.state.start('Game', false, false, playerData, challengeData)
+        this.state.start('Game', true, false, playerData, challengeData)
     }
 }

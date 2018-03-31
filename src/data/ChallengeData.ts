@@ -3,5 +3,6 @@ export interface MobData {
 }
 
 export interface ChallengeData {
-    opponents: MobData[]
+    opponents: MobData[],
+    location: string
 }
